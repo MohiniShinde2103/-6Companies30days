@@ -1,6 +1,14 @@
 /*Problem Statement
 Given an array of positive numbers, the task is to find the number of possible contiguous subarrays having product less than a given number k.*/
 
+/*
+Input : 
+n = 4, k = 10
+a[] = {1, 2, 3, 4}
+Output : 
+7
+*/
+
 //Initial Template for Java
 import java.util.*;
 import java.lang.*;
