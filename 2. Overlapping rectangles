@@ -5,6 +5,16 @@ Two rectangles sharing a side are considered overlapping.
 (L1 and R1 are the extreme points of the first rectangle and L2 and R2 are the extreme points of the second rectangle).
 Note: It may be assumed that the rectangles are parallel to the coordinate axis.*/
 
+/*
+Input:
+L1=(0,10)
+R1=(10,0)
+L2=(5,5)
+R2=(15,0)
+Output:
+1
+*/
+
 // Initial Template for Java
 import java.io.*;
 import java.util.*;
