@@ -18,16 +18,22 @@ class GfG
  {
 	String encode(String str)
 	{
-          String des="";
-          for(int i=0;i<str.length();i++){
-              des+=str.charAt(i);
-              int c=1;
-              while(i+1<str.length() && str.charAt(i)==str.charAt(i+1)){
-                  c++;
-                  i++;
-              }
-              des+=c+"";
+          //Your code here
+          String ans="";
+          int count=1,n=str.length();
+          ans+=str.charAt(0);
+          for(int i=1;i<n;i++)
+          {
+              if(str.charAt(i)==str.charAt(i-1))
+                count++;
+            else
+            {
+                ans+=count;
+                ans+=str.charAt(i);
+                count=1;
+            }
           }
-          return des;
+          ans+=count;
+          return ans;
 	}
  }
