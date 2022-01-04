@@ -11,65 +11,41 @@ It may be assumed that the input contains valid digits from 0 to 9 and If there 
 extra trailing 0’s and two or more consecutive 0’s then it is an invalid string. */
 
 /*
+Input: str = "123"
+Output: 3
+
 Input: str = "27"
 Output: 1
 */
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-class GFG
-{
-    public static void main(String[] args) throws IOException
-    {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine().trim());
-        while(T-->0)
-        {
-            String str = br.readLine().trim();
-            Solution ob = new Solution();
-            int ans = ob.CountWays(str);
-            System.out.println(ans);
-        }
-    }
-}
 
 class Solution
 {
     public long backtrack(StringBuilder sb, int start, String str, long[]visited){
-        
         if(start>=str.length()){
             return 1;
-        }    
-        
+        } 
         if(str.charAt(start)=='0'){
             return 0;
         }
-        
         long count = 0;
         if(visited[start]!=-1){
             return visited[start];
         }
         for(int i=1; i<=2 && start+i<=str.length();i++){
             String temp = str.substring(start, start+i);
-            
             int val = Integer.valueOf(temp);
-            
-            if(val>=1 && val<=26){
-                
+            if(val>=1 && val<=26){  
                 count = (count + backtrack(sb,start+i,str, visited))%1000000007;   
             }
         }
         visited[start] = count;
-        
         return count;   
     }
     public int CountWays(String str)
     {
         long[]dp = new long[str.length()];
         Arrays.fill(dp,-1);
-        
         return (int)backtrack(new StringBuilder(""), 0,str,dp);
-        
     }
 }
