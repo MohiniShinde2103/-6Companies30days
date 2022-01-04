@@ -1,36 +1,23 @@
-/*Problem Statement
+/* Problem Statement
 Given a string, Your task is to  complete the function encode that returns the run length encoded string for the given string.
 eg if the input string is “wwwwaaadexxxxxx”, then the function should return “w4a3d1e1x6″.
-You are required to complete the function encode that takes only one argument the string which is to be encoded and returns the encoded string.*/
+You are required to complete the function encode that takes only one argument the string which is to be encoded and returns the encoded string. */
 
 /*
 Input:
 str = aaaabbbccc
 Output: a4b3c3
+
+Input:
+str = abbbcdddd
+Output: a1b3c1d4
 */
 
-import java.util.*;
-class RLEncoding
-{
-   public static void main(String[] args) 
-   { 
-      Scanner sc = new Scanner(System.in);
-	  int T = sc.nextInt();
-	  sc.nextLine();
-	  while(T>0)
-	  {  
-		String str = sc.nextLine();
-		GfG g = new GfG();
-		System.out.println(g.encode(str));
-        T--;
-	  }
-   }
-}
+
 class GfG
  {
 	String encode(String str)
 	{
-          //Your code here
           String des="";
           for(int i=0;i<str.length();i++){
               des+=str.charAt(i);
@@ -43,5 +30,4 @@ class GfG
           }
           return des;
 	}
-	
  }
