@@ -27,3 +27,11 @@ class Solution {
             return (M % N);
     }
 };
+
+// or
+
+class Solution {
+    static int findPosition(int N , int M , int K) {
+        return ((K+M-1)%N==0)?N:(K+M-1)%N;
+    }
+};
