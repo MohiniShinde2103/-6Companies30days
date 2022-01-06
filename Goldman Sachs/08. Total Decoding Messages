@@ -21,31 +21,24 @@ Output: 1
 
 class Solution
 {
-    public long backtrack(StringBuilder sb, int start, String str, long[]visited){
-        if(start>=str.length()){
-            return 1;
-        } 
-        if(str.charAt(start)=='0'){
-            return 0;
-        }
-        long count = 0;
-        if(visited[start]!=-1){
-            return visited[start];
-        }
-        for(int i=1; i<=2 && start+i<=str.length();i++){
-            String temp = str.substring(start, start+i);
-            int val = Integer.valueOf(temp);
-            if(val>=1 && val<=26){  
-                count = (count + backtrack(sb,start+i,str, visited))%1000000007;   
-            }
-        }
-        visited[start] = count;
-        return count;   
-    }
     public int CountWays(String str)
     {
-        long[]dp = new long[str.length()];
-        Arrays.fill(dp,-1);
-        return (int)backtrack(new StringBuilder(""), 0,str,dp);
+        // code here
+        int n = str.length();
+        int[] dp = new int[n + 1];
+        if(str.charAt(0) == '0')
+            return 0;
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i=2; i<=n; i++)
+        {
+            int c1 = 0, c2 = 0;
+            if(str.charAt(i-1) > '0')
+                c1 = dp[i-1];
+            if(str.charAt(i-2) == '1' || (str.charAt(i-2) == '2' && str.charAt(i-1) < '7'))
+                c2 = dp[i-2];
+            dp[i] = (c1+c2)%1000000007;
+        }
+        return dp[n];
     }
 }
